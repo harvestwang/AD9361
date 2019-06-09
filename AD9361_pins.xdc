@@ -1,4 +1,5 @@
 # AD9361 constraints
+
 # RX port
 set_property -dict {PACKAGE_PIN M6 IOSTANDARD LVDS DIFF_TERM 1} [get_ports rx_clk_in_p]
 set_property -dict {PACKAGE_PIN M5 IOSTANDARD LVDS DIFF_TERM 1} [get_ports rx_clk_in_n]

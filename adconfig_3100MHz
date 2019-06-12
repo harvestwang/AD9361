@@ -15,17 +15,11 @@ echo 0x041 0x13 > direct_reg_access
 echo 0x042 0x20 > direct_reg_access
 echo 0x043 0x00 > direct_reg_access
 
-# modified by Harvest
-# echo 0x015 0x0C > direct_reg_access
-# end modified
 
 cd /sys/bus/iio/devices/iio\:device1
 echo 20000000 > in_voltage_rf_bandwidth
 
-# echo 3190036000 > out_altvoltage0_RX_LO_frequency
-echo 3130036000 > out_altvoltage0_RX_LO_frequency
-# echo 800000000 > out_altvoltage0_RX_LO_frequency
-# echo 160000000 > out_altvoltage0_RX_LO_frequency
+echo 800000000 > out_altvoltage0_RX_LO_frequency
 echo 32000000 > in_voltage_sampling_frequency
 echo fast_attack > in_voltage0_gain_control_mode
 
@@ -35,10 +29,7 @@ echo 0x003 0x58 > direct_reg_access
 
 cd /sys/bus/iio/devices/iio\:device1
 echo 20000000 > out_voltage_rf_bandwidth
-# echo 800000000 > out_altvoltage1_TX_LO_frequency
-echo 3130036000 > out_altvoltage1_TX_LO_frequency
-# echo 3190036000 > out_altvoltage1_TX_LO_frequency
-# echo 160000000 > out_altvoltage1_TX_LO_frequency
+echo 800000000 > out_altvoltage1_TX_LO_frequency
  
 cd /sys/kernel/debug/iio/iio\:device1
 echo 0x073 0xF0 > direct_reg_access

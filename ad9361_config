@@ -1,0 +1,40 @@
+#! /bin/sh
+
+# ad9361_drv.ko是ADI提供的AD9361驱动
+insmod ad9361_drv.ko
+
+sleep 1s
+
+cd /sys/kernel/debug/iio/iio\:device1
+echo 0x007 0x0C > direct_reg_access
+echo 0x00A 0x02 > direct_reg_access
+echo 0x010 0xC8 > direct_reg_access
+echo 0x011 0x00 > direct_reg_access
+echo 0x012 0x10 > direct_reg_access
+echo 0x044 0x19 > direct_reg_access
+echo 0x041 0x13 > direct_reg_access
+echo 0x042 0x20 > direct_reg_access
+echo 0x043 0x00 > direct_reg_access
+
+
+cd /sys/bus/iio/devices/iio\:device1
+echo 20000000 > in_voltage_rf_bandwidth
+
+echo 800000000 > out_altvoltage0_RX_LO_frequency
+echo 32000000 > in_voltage_sampling_frequency
+echo fast_attack > in_voltage0_gain_control_mode
+
+cd /sys/kernel/debug/iio/iio\:device1
+echo 0x002 0x58 > direct_reg_access
+echo 0x003 0x58 > direct_reg_access
+
+cd /sys/bus/iio/devices/iio\:device1
+echo 20000000 > out_voltage_rf_bandwidth
+echo 800000000 > out_altvoltage1_TX_LO_frequency
+ 
+cd /sys/kernel/debug/iio/iio\:device1
+echo 0x073 0xF0 > direct_reg_access
+echo 0x074 0x00 > direct_reg_access
+echo 0x07C 0x40 > direct_reg_access
+
+echo "ADC9361 configure complete."
